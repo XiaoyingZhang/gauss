@@ -9,4 +9,12 @@ class GaussianRational:
         return GaussianRational(self.x+right.x, self.y+right.y)
     def __sub__(self, right):
         return GaussianRational(self.x-right.x, self.y-right.y)
-    
+    def __div__(self,right):
+        """
+        add a new function
+        """
+        divisor = right.x * right.x + right.y * right.y
+        resultx = self.x * right.x + self.y * right.y
+        resulty = - self.x * right.y + self.y * right.x
+        result = GaussianRational(float(resultx)/divisor, float(resulty)/divisor)
+        return result
